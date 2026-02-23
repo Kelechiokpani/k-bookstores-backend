@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Build/Dist folders
+dist/
+build/
+out/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database (if using local SQLite or migrations)
+*.db
+*.sqlite
+prisma/dev.db
+
+# Coverage reports (Testing)
+coverage/
+.nyc_output/
+
+# OS/IDE metadata
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
