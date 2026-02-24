@@ -33,23 +33,25 @@ const allowedOrigins = [
     process.env.LIVE_ORIGIN
 ].filter(Boolean);
 
-
-// Middlewares
 server.use(cors({
-    origin: function (origin, callback) {
-        // allow requests with no origin (like mobile apps or curl)
+    origin: (origin, callback) => {
+        // 1. Allow server-to-server or tools like Postman (no origin)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        // 2. Check if the origin is in our allowed list
+        if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
+            console.error(`CORS Error: Origin ${origin} not allowed`);
             callback(new Error('Not allowed by CORS'));
         }
     },
     credentials: true,
-    exposedHeaders: ['X-Total-Count'],
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'] // Added OPTIONS
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Total-Count'],
+    exposedHeaders: ['X-Total-Count']
 }));
+
 
 // server.use(cors({
 //     origin: process.env.ORIGIN || process.env.LIVE_ORIGIN || 'http://localhost:3000' || 'https://k-bookstore.vercel.app',
