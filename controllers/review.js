@@ -1,4 +1,4 @@
-const Review = require("../models/Review");
+const Review = require("../models/review");
 
 // CREATE: Post a new review
 exports.create = async (req, res) => {

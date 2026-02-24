@@ -1,4 +1,4 @@
-const Wishlist = require("../models/Wishlist");
+const Wishlist = require("../models/wishlist");
 
 
 // CREATE: Add a product to the wishlist
@@ -36,7 +36,7 @@ exports.getWishlistByUser = async (req, res) => {
     }
 };
 
-// controllers/Wishlist.js
+// controllers/wishlist.js
 
 exports.clearWishlist = async (req, res) => {
     try {

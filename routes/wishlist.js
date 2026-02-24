@@ -5,9 +5,9 @@ const {
     getWishlistByUser,
     deleteFromWishlist,
     clearWishlist
-} = require("../controllers/Wishlist");
+} = require("../controllers/wishlist");
 
-// FIX: Ensure this matches your filename "Auth.js" (Capital A)
+// FIX: Ensure this matches your filename "auth.js" (Capital A)
 const { verifyToken } = require("../middleware/Auth");
 
 router.use(verifyToken); // Apply to all routes below

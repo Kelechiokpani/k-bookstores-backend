@@ -1,11 +1,11 @@
-const User = require("../models/User");
+const User = require("../models/user");
 const bcrypt = require('bcryptjs');
-const { sendMail } = require("../utils/Emails");
-const { generateOTP } = require("../utils/GenerateOtp");
-const Otp = require("../models/OTP");
-const { sanitizeUser } = require("../utils/SanitizeUser");
-const { generateToken } = require("../utils/GenerateToken");
-const PasswordResetToken = require("../models/PasswordResetToken");
+const { sendMail } = require("../utils/emails");
+const { generateOTP } = require("../utils/generateOtp");
+const Otp = require("../models/otp");
+const { sanitizeUser } = require("../utils/sanitizeUser");
+const { generateToken } = require("../utils/generateToken");
+const PasswordResetToken = require("../models/passwordResetToken");
 const mongoose = require("mongoose");
 
 

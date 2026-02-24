@@ -1,4 +1,4 @@
-const Brand = require("../models/Brand");
+const Brand = require("../models/brand");
 
 const brands = [
   { _id: "65a7e20102e12c44f59943da", name: "Apple" },

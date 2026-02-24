@@ -1,5 +1,5 @@
-const Order = require("../models/Order");
-const Cart = require("../models/Cart");
+const Order = require("../models/order");
+const Cart = require("../models/cart");
 
 // CREATE: Place an order and clear the user's cart
 exports.create = async (req, res) => {

@@ -1,4 +1,4 @@
-const Address = require("../models/Address");
+const Address = require("../models/address");
 
 // CREATE: Add a new address for the logged-in user
 exports.create = async (req, res) => {

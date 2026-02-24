@@ -1,4 +1,4 @@
-const Category = require("../models/Category");
+const Category = require("../models/category");
 
 const categories = [
   { _id: "65a7e24602e12c44f599442c", name: "smartphones" },
