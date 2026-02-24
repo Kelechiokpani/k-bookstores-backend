@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 8000;
 
 
 // Database Connection
-connectToDB();
+connectToDB().then(r => {});
 
 // Middlewares
 server.use(cors({
