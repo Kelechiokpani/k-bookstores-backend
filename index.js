@@ -26,13 +26,37 @@ const PORT = process.env.PORT || 8000;
 // Database Connection
 connectToDB().then(r => {});
 
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://k-bookstore.vercel.app',
+    process.env.ORIGIN,
+    process.env.LIVE_ORIGIN
+].filter(Boolean);
+
+
 // Middlewares
 server.use(cors({
-    origin: process.env.ORIGIN || process.env.LIVE_ORIGIN || 'http://localhost:3000' || 'https://k-bookstore.vercel.app/books',
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     exposedHeaders: ['X-Total-Count'],
-    methods: ['GET', 'POST', 'PATCH', 'DELETE']
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'] // Added OPTIONS
 }));
+
+// server.use(cors({
+//     origin: process.env.ORIGIN || process.env.LIVE_ORIGIN || 'http://localhost:3000' || 'https://k-bookstore.vercel.app',
+//     credentials: true,
+//     exposedHeaders: ['X-Total-Count'],
+//     methods: ['GET', 'POST', 'PATCH', 'DELETE']
+// }));
 
 
 server.use(express.json());
