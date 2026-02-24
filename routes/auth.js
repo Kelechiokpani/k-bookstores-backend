@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth");
-const { verifyToken } = require("../middleware/Auth");
+const { verifyToken } = require("../middleware/auth");
 
 // --- PUBLIC ROUTES ---
 // No token required for these
