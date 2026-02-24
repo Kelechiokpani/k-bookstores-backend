@@ -8,7 +8,7 @@ const {
 } = require("../controllers/wishlist");
 
 // FIX: Ensure this matches your filename "auth.js" (Capital A)
-const { verifyToken } = require("../middleware/Auth");
+const { verifyToken } = require("../middleware/auth");
 
 router.use(verifyToken); // Apply to all routes below
 router.post("/", addToWishlist);
