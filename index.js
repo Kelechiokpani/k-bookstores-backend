@@ -27,10 +27,10 @@ const PORT = process.env.PORT || 8000;
 connectToDB().then(r => {});
 
 const allowedOrigins = [
-    'http://localhost:3000',
     'https://k-bookstore.vercel.app',
-    process.env.ORIGIN,
-    process.env.LIVE_ORIGIN
+    'http://localhost:3000',
+    process.env.LIVE_ORIGIN,
+    process.env.ORIGIN
 ].filter(Boolean);
 
 server.use(cors({
