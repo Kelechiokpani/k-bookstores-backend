@@ -30,8 +30,15 @@ exports.signup = async (req, res) => {
 
         const secureInfo = sanitizeUser(createdUser);
         const token = generateToken(secureInfo);
+        res.cookie('token', token, cookieOptions,
+            {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none',
+                maxAge: 24 * 60 * 60 * 1000
+            }
 
-        res.cookie('token', token, cookieOptions).status(201).json(secureInfo);
+        ).status(201).json(secureInfo);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error occurred during signup" });
@@ -45,16 +52,22 @@ exports.login = async (req, res) => {
         if (existingUser && (await bcrypt.compare(req.body.password, existingUser.password))) {
             const secureInfo = sanitizeUser(existingUser);
             const token = generateToken(secureInfo);
-
-            return res.cookie('token', token, cookieOptions).status(200).json(secureInfo);
+            return res.cookie('token', token, cookieOptions,
+            {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none',
+                maxAge: 24 * 60 * 60 * 1000
+            }
+            ).status(200).json(secureInfo);
         }
-
         res.status(401).json({ message: "Invalid Credentials" });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error occurred while logging in' });
     }
 };
+
 
 exports.logout = async (req, res) => {
     try {
@@ -64,6 +77,7 @@ exports.logout = async (req, res) => {
         res.status(500).json({ message: "Logout failed" });
     }
 };
+
 
 exports.checkAuth = async (req, res) => {
     try {
